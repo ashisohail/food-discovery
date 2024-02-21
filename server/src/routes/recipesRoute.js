@@ -38,20 +38,20 @@ router.post("/addRecipe", async (req, res) => {
   }
 });
 
-router.put("/addRecipe", async (req, res) => {
-  console.log("recipie", newRecipe);
-  try {
-    const newRecipe = await RecipeModel.findById(req.body.recipeId);
-    const user = await UserModel.findById(req.body.userId);
-    user.savedRecipes.push(newRecipe);
+// router.put("/addRecipe", async (req, res) => {
+//   console.log("recipie", newRecipe);
+//   try {
+//     const newRecipe = await RecipeModel.findById(req.body.recipeId);
+//     const user = await UserModel.findById(req.body.userId);
+//     user.savedRecipes.push(newRecipe);
 
-    await newRecipe.save();
-    console.log("response", response);
-    res.json({ savedRecipes: user.savedRecipes });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+//     await newRecipe.save();
+//     console.log("response", response);
+//     res.json({ savedRecipes: user.savedRecipes });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 // router.get("/savedRecipes/ids", async (req, res) => {
 //   try {
 //     const user = await UserModel.findById(req.body.userId);

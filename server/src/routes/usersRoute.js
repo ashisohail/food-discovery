@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { UserModel } from "../models/users.js";
+import { UserModel } from "../models/usersModel.js";
 
 const router = express.Router();
 
@@ -12,6 +12,7 @@ router.post("/register", async (req, res) => {
   if (user) {
     return res.json({ message: "User already exists!" });
   }
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = new UserModel({ username, password: hashedPassword });
@@ -37,25 +38,18 @@ router.post("/login", async (req, res) => {
   res.json({ token, userID: user._id });
 });
 
-// router.post("/register", async (req, res) => {
-//   const { username, password } = req.body;
-
-//   try {
-//     const user = await UserModel.findOne({ username });
-//     res.status(200).json(user);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
-//Get all Method
-// router.get("/getAll", async (req, res) => {
-//   try {
-//     const user = await UserModel.find();
-//     res.json(user);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
 export { router as userRouter };
+
+export const verifyToken = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    jwt.verify(authHeader, "secret", (err) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      next();
+    });
+  } else {
+    res.sendStatus(401);
+  }
+};

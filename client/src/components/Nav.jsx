@@ -4,7 +4,7 @@ function Nav() {
       {/* logo */}
       <div>
         <a href="">
-          <i className="fa-solid fa-pepper-hot text-3xl text-orange-700 h-10 hover:text-orange-600">
+          <i className="fa-solid fa-plate-wheat text-3xl text-orange-700 h-10 hover:text-orange-600">
             <span className="text-sm">
               <span className="text-yellow-500"> Food</span> Discovery
             </span>
@@ -14,7 +14,7 @@ function Nav() {
 
       {/* Bars button for Dropdown menu */}
       <nav>
-        {/* <button
+        <button
           id="dropdownDefault"
           data-dropdown-toggle="dropdown"
           className="md:hidden"
@@ -24,12 +24,12 @@ function Nav() {
         </button>
 
         {/* Dropdown menu  */}
-        {/* <div id="dropdown" className="hidden z-10 w-50 bg-gray-50">
+        <div id="dropdown" className="hidden z-10 w-50 bg-gray-50">
           <ul
             className="py-1 text-sm text-black-700 dark:text-black-200"
             aria-labelledby="dropdownDefault"
-          > */}
-        {/* <li>
+          >
+            <li>
               <a
                 href="index.html"
                 className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -41,8 +41,8 @@ function Nav() {
               <a
                 href="products.html"
                 className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              > */}
-        {/* Products
+              >
+                Products
               </a>
             </li>
             <li>
@@ -54,7 +54,7 @@ function Nav() {
               </a>
             </li>
           </ul>
-        </div> */}
+        </div>
 
         {/* menu items    */}
         <ul className="max-md:hidden md:flex md:space-x-6 md:p-0 md:space-x-6">

@@ -10,6 +10,20 @@ function RecipeCard({
   //   setFilteredProducts,
 }) {
   const [isRecipe, setIsRecipe] = useState(true);
+
+  const recipeDetailHandler = () => {
+    axios
+      .get(`http://localhost:3001/recipes/${id}`)
+      .then((response) => {
+        if (response.status === 200) {
+        }
+      })
+      .catch(() => {
+        alert(
+          "There was an error while getting recepie from database, Please try again."
+        );
+      });
+  };
   //   const handleDelete = () => {
   //     axios
   //       .delete(`http://localhost:3001/recipes/${id}`)

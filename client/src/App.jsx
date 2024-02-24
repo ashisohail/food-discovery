@@ -1,20 +1,21 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Nav from "./components/Nav.jsx";
-import Footer from "./components/Footer.jsx";
-import Recipes from "./components/Recipes";
+import Home from "./components/Home";
+import RecipeDetail from "./components/RecipeDetail";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="flex flex-col h-screen justify-between">
-      <div>
-        <Nav />
+      <Nav />
+      <div className="mt-40">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes/:recipeId" element={<RecipeDetail />} />
+        </Routes>
       </div>
-      <div>
-        <Recipes />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

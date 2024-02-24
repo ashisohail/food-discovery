@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard.jsx";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -10,7 +11,6 @@ function Recipes() {
       .get("http://localhost:3001/recipes/getRecipes")
       .then((response) => {
         // handle success
-        console.log("recipes", response.data);
         setRecipes(response.data);
       })
       .catch((error) => {
@@ -20,18 +20,19 @@ function Recipes() {
   }, []);
 
   return (
-    <ul className="flex items-center justify-center ">
+    <div className="flex items-center justify-center ">
       {recipes?.map((recipe, index) => {
         return (
-          <RecipeCard
-            key={index}
-            name={recipe.name}
-            imageUrl={recipe.imageUrl}
-            id={recipe.id}
-          />
+          <Link key={index} to={`/recipes/${recipe._id}`}>
+            <RecipeCard
+              name={recipe.name}
+              imageUrl={recipe.imageUrl}
+              id={recipe._id}
+            />
+          </Link>
         );
       })}
-    </ul>
+    </div>
   );
 }
 

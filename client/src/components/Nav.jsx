@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Home from "./Home";
+
 function Nav() {
   return (
     <header className="fixed h-20 w-full flex justify-between items-center px-4 md:px-12 bg-gray-200 z-50">
@@ -59,7 +62,7 @@ function Nav() {
         {/* menu items    */}
         <ul className="max-md:hidden md:flex md:space-x-6 md:p-0 md:space-x-6">
           <li className="hover:text-orange-600">
-            <a href="index.html">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="hover:text-orange-600">
             <a href="products.html">Recipes</a>

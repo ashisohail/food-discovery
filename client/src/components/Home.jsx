@@ -1,7 +1,7 @@
-import React from "react";
+import Recipes from "./Recipes.jsx";
 
 function Home() {
-  return <div>Home</div>;
+  return <Recipes />;
 }
 
 export default Home;

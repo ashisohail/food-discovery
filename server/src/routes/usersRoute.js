@@ -6,7 +6,7 @@ import { UserModel } from "../models/usersModel.js";
 
 const router = express.Router();
 
-//Get all recipes
+//Get all users
 router.get("/getUser", async (req, res) => {
   try {
     const response = await UserModel.find({});
@@ -31,6 +31,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("inside login now", req.body);
   try {
     const { username, password } = req.body;
     const user = await UserModel.findOne({ username });
@@ -44,10 +45,12 @@ router.post("/login", async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.json({ message: "Username or Password Is Incorrect!" });
+      return res
+        .status(401)
+        .json({ message: "Username or Password Is Incorrect!" });
     }
-    const token = jwt.sign({ id: user._id }, "secret");
-    res.json({ token, userID: user._id });
+    const token = jwt.sign({ id: user._id, name: user.username }, "secret");
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

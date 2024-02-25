@@ -8,7 +8,7 @@ const RecipeSchema = new mongoose.Schema({
   cookingTime: { type: String, required: true },
   userOwner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "users",
     required: true,
   },
 });

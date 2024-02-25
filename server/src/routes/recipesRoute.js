@@ -17,12 +17,9 @@ router.get("/getRecipes", async (req, res) => {
 });
 
 //Create a new recipe
-router.post("/addRecipe", verifyToken, async (req, res) => {
-  // const newRecipe = new RecipeModel(req.body);
-  // const { name, ingredients, instructions, imageUrl, cookingTime, userOwner } =
-  //   req.body;
+router.post("/addRecipe", async (req, res) => {
   const newRecipe = new RecipeModel({
-    _id: new mongoose.Types.Objectid(),
+    _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,
@@ -38,6 +35,31 @@ router.post("/addRecipe", verifyToken, async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+// router.post("/", verifyToken, async (req, res) => {
+//   const recipe = new RecipesModel({
+//     _id: new mongoose.Types.ObjectId(),
+//     name: req.body.name,
+//     image: req.body.image,
+//     ingredients: req.body.ingredients,
+//     instructions: req.body.instructions,
+//     imageUrl: req.body.imageUrl,
+//     cookingTime: req.body.cookingTime,
+//     userOwner: req.body.userOwner,
+//   });
+//   console.log(recipe);
+
+//   try {
+//     const result = await recipe.save();
+//     res.status(201).json({
+//       createdRecipe: {
+//         name: result.name,
+//         image: result.image,
+//         ingredients: result.ingredients,
+//         instructions: result.instructions,
+//         _id: result._id,
+//       },
+//     });
 
 // Get a recipe by ID
 router.get("/:recipeId", async (req, res) => {
@@ -79,6 +101,17 @@ router.get("/myRecipes/:userId", async (req, res) => {
       userOwner: { $in: req.params.userId },
     });
     res.status(200).json({ myRecipes });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Delete Myrecipes
+router.delete("/myRecipes/:recipeId", async (req, res) => {
+  try {
+    const recipeId = req.params.recipeId;
+    await RecipeModel.findByIdAndDelete(recipeId);
+    res.status(200).json({ message: "Recipe Deleted successfully." });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

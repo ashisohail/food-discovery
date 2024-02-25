@@ -20,7 +20,7 @@ function Recipes() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex w-full flex-wrap	justify-around">
       {recipes?.map((recipe, index) => {
         return (
           <Link key={index} to={`/recipes/${recipe._id}`}>

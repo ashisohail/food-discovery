@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import Home from "./Home";
+import { useCookies } from "react-cookie";
 
 function Nav() {
+  const [cookies, setCookies] = useCookies(["token"]);
+  console.log("cockies", cookies);
+
   return (
     <header className="fixed h-20 w-full flex justify-between items-center px-4 md:px-12 bg-gray-200 z-50">
       {/* logo */}
@@ -67,9 +70,25 @@ function Nav() {
           <li className="hover:text-orange-600">
             <a href="products.html">Recipes</a>
           </li>
-          <li className="hover:text-orange-600">
-            <a href="contact-form.html">Sign In</a>
-          </li>
+          {cookies.token ? (
+            <li>
+              <a
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setCookies("token", "");
+                }}
+                className="hover:text-orange-600 cursor-pointer"
+              >
+                Sign Out
+              </a>
+            </li>
+          ) : (
+            <li>
+              <a className="hover:text-orange-600">
+                <Link to="/auth/login">Sign In</Link>
+              </a>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

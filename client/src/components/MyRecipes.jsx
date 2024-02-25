@@ -24,17 +24,23 @@ function MyRecipes() {
 
   return (
     <div className="flex w-full flex-wrap justify-around">
-      {myRecipes?.map((myRecipe, index) => {
-        return (
-          <Link key={index} to={`/recipes/${myRecipe._id}`}>
-            <RecipeCard
-              name={myRecipe.name}
-              imageUrl={myRecipe.imageUrl}
-              id={myRecipe._id}
-            />
-          </Link>
-        );
-      })}
+      {myRecipes.length ? (
+        myRecipes?.map((myRecipe, index) => {
+          return (
+            <Link key={index} to={`/recipes/${myRecipe._id}`}>
+              <RecipeCard
+                name={myRecipe.name}
+                imageUrl={myRecipe.imageUrl}
+                id={myRecipe._id}
+              />
+            </Link>
+          );
+        })
+      ) : (
+        <p className="font-bold bg-gray-200 py-3 px-5">
+          No recipes found related to this user.
+        </p>
+      )}
     </div>
   );
 }

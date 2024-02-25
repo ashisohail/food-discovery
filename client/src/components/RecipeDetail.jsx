@@ -5,7 +5,6 @@ import RecipeCard from "./RecipeCard.jsx";
 
 function RecipeDetail() {
   const { recipeId } = useParams();
-  console.log("recipeid", recipeId);
   const [recipe, setRecipe] = useState({});
 
   useEffect(() => {

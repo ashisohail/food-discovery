@@ -27,7 +27,6 @@ function SignIn() {
         navigate("/");
       })
       .catch((err) => {
-        console.log("error", err);
         alert(err.response.data.message);
       });
   };

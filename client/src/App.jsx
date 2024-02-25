@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import Register from "./components/Register";
+import MyRecipes from "./components/MyRecipes";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/recipes/:recipeId" element={<RecipeDetail />} />
           <Route path="/auth/login" element={<SignIn />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/recipes/myRecipes/:userId" element={<MyRecipes />} />
         </Routes>
       </div>
       <Footer />

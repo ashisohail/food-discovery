@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useState } from "react";
 
 function Nav() {
   const [cookies, setCookies] = useCookies(["token"]);
@@ -66,7 +67,9 @@ function Nav() {
             <Link to="/">Home</Link>
           </li>
           <li className="hover:text-orange-600">
-            <a href="products.html">Recipes</a>
+            <Link to={`/recipes/myRecipes/${cookies.token.id}`}>
+              My Recipes
+            </Link>
           </li>
           {cookies.token ? (
             <li>

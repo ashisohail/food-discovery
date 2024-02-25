@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useCookies } from "react-cookie";
-import { jwtDecode } from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useOutletContext } from "react-router-dom";
-
 function Register() {
-  //   const { token, setToken } = useOutletContext();
   const navigate = useNavigate();
-
   const registerHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

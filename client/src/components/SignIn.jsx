@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignIn() {
   const [_, setCookies] = useCookies(["token"]);
@@ -37,7 +37,7 @@ function SignIn() {
       className="border border-gray-300 rounded-lg shadow-md p-4 mx-auto inline-block text-left w-1/3 flex justify-center items-center"
     >
       <div className="flex flex-col justify-center w-full">
-        <h1 className="text-xl font-bold mb-5">Sign In</h1>
+        {/* <h1 className="text-xl font-bold mb-5">Sign In</h1> */}
         <label htmlFor="username">Username</label>
         <input required type="text" name="username" />
         <label htmlFor="password">Password</label>
@@ -47,6 +47,17 @@ function SignIn() {
           type="submit"
         >
           Sign In
+        </button>
+
+        {/* Register Button */}
+        <button
+          className="mt-10 border-2 border-black bg-black text-slate-50 p-2 shadow-lg hover:bg-slate-50 hover:text-black text-xs"
+          type="submit"
+        >
+          <Link to="/auth/register">
+            Don't have account!
+            <span className="hover:text-red-800"> Register</span>
+          </Link>
         </button>
       </div>
     </form>

@@ -5,6 +5,7 @@ import RecipeDetail from "./components/RecipeDetail";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipes/:recipeId" element={<RecipeDetail />} />
           <Route path="/auth/login" element={<SignIn />} />
+          <Route path="/auth/register" element={<Register />} />
         </Routes>
       </div>
       <Footer />

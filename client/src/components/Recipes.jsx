@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard.jsx";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import image from "../assets/images/Fooddiscovery.jpg";
 
 function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -21,10 +22,16 @@ function Recipes() {
 
   return (
     <>
-      <h2 className="text-3xl text-orange-500 h-10 hover:text-orange-600">
-        <span className="text-yellow-500">"Eating is a necessity,</span> but
-        cooking is an art."
-      </h2>
+      <div className="flex items-center justify-start mb-10">
+        <img
+          className="rounded-full h-[300px] w-[300px] pl-10"
+          src={image}
+          alt="Image of Food"
+        />
+        <h1 className="text-3xl text-orange-500 h-10 hover:text-orange-600 ml-5">
+          "Eating is a necessity, but cooking is an art."
+        </h1>
+      </div>
       <div className="flex w-full flex-wrap	justify-around mb-8">
         {recipes?.map((recipe, index) => {
           return (

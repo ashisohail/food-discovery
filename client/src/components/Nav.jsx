@@ -5,7 +5,7 @@ import { useState } from "react";
 function Nav() {
   const [cookies, setCookies] = useCookies(["token"]);
   return (
-    <header className="fixed h-20 w-full flex justify-between items-center px-4 md:px-12 bg-gray-200 z-50">
+    <header className="fixed h-16 w-full flex justify-between items-center px-4 md:px-12 bg-gray-200 z-50">
       {/* logo */}
       <div>
         <a href="">

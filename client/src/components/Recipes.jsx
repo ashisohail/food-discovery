@@ -20,19 +20,25 @@ function Recipes() {
   }, []);
 
   return (
-    <div className="flex w-full flex-wrap	justify-around">
-      {recipes?.map((recipe, index) => {
-        return (
-          <Link key={index} to={`/recipes/${recipe._id}`}>
-            <RecipeCard
-              name={recipe.name}
-              imageUrl={recipe.imageUrl}
-              id={recipe._id}
-            />
-          </Link>
-        );
-      })}
-    </div>
+    <>
+      <h2 className="text-3xl text-orange-500 h-10 hover:text-orange-600">
+        <span className="text-yellow-500">"Eating is a necessity,</span> but
+        cooking is an art."
+      </h2>
+      <div className="flex w-full flex-wrap	justify-around mb-8">
+        {recipes?.map((recipe, index) => {
+          return (
+            <Link key={index} to={`/recipes/${recipe._id}`}>
+              <RecipeCard
+                name={recipe.name}
+                imageUrl={recipe.imageUrl}
+                id={recipe._id}
+              />
+            </Link>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

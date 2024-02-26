@@ -30,7 +30,6 @@ function Register() {
       className="border border-gray-300 rounded-lg shadow-md p-4 mx-auto inline-block text-left w-1/3 flex justify-center items-center"
     >
       <div className="flex flex-col justify-center w-full">
-        {/* <h1 className="text-xl font-bold mb-5">Register</h1> */}
         <label htmlFor="username">Username</label>
         <input required type="text" name="username" />
         <label htmlFor="password">Password</label>

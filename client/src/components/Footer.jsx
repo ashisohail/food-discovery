@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer>
-      <div className="flex items-center justify-center w-full space-x-6 h-16 bg-gray-100 text-gray-600">
+      <div className="flex items-center justify-center w-full space-x-6 h-16 bg-gray-100 text-gray-800">
         <a href="">
           <i className="fa-solid fa-copyright text-3xl"></i>
         </a>

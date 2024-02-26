@@ -1,12 +1,11 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-// import * as jose from "jose";
 import { UserModel } from "../models/usersModel.js";
 
 const router = express.Router();
 
-//Get all users
+//Get a user
 router.get("/getUser", async (req, res) => {
   try {
     const response = await UserModel.find({});
@@ -16,6 +15,7 @@ router.get("/getUser", async (req, res) => {
   }
 });
 
+// Add a User
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
@@ -23,7 +23,6 @@ router.post("/register", async (req, res) => {
   if (user) {
     return res.status(400).json({ message: "User already exists!" });
   }
-
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = new UserModel({ username, password: hashedPassword });
   await newUser.save();
@@ -31,7 +30,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log("inside login now", req.body);
   try {
     const { username, password } = req.body;
     const user = await UserModel.findOne({ username });

@@ -36,31 +36,6 @@ router.post("/addRecipe", async (req, res) => {
   }
 });
 
-// router.post("/", verifyToken, async (req, res) => {
-//   const recipe = new RecipesModel({
-//     _id: new mongoose.Types.ObjectId(),
-//     name: req.body.name,
-//     image: req.body.image,
-//     ingredients: req.body.ingredients,
-//     instructions: req.body.instructions,
-//     imageUrl: req.body.imageUrl,
-//     cookingTime: req.body.cookingTime,
-//     userOwner: req.body.userOwner,
-//   });
-//   console.log(recipe);
-
-//   try {
-//     const result = await recipe.save();
-//     res.status(201).json({
-//       createdRecipe: {
-//         name: result.name,
-//         image: result.image,
-//         ingredients: result.ingredients,
-//         instructions: result.instructions,
-//         _id: result._id,
-//       },
-//     });
-
 // Get a recipe by ID
 router.get("/:recipeId", async (req, res) => {
   try {
@@ -71,28 +46,22 @@ router.get("/:recipeId", async (req, res) => {
   }
 });
 
-// Save a Recipe
-router.put("/", async (req, res) => {
-  const recipe = await RecipeModel.findById(req.body.recipeID);
+// Edit a Recipe
+router.put("/editRecipe", async (req, res) => {
+  const recipe = await RecipeModel.findById(req.body._id);
+  recipe.name = req.body.name;
+  recipe.ingredients = req.body.ingredients;
+  recipe.instructions = req.body.instructions;
+  recipe.imageUrl = req.body.imageUrl;
+
   const user = await UserModel.findById(req.body.userID);
   try {
-    user.savedRecipes.push(recipe);
-    await user.save();
-    res.status(201).json({ savedRecipes: user.savedRecipes });
+    await recipe.save();
+    res.status(201).json({ updatedRecipe: recipe });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
-
-// Get id of saved recipes
-// router.get("/savedRecipes/ids/:userId", async (req, res) => {
-//   try {
-//     const user = await UserModel.findById(req.params.userId);
-//     res.status(201).json({ savedRecipes: user?.savedRecipes });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
 
 // Get Myrecipes
 router.get("/myRecipes/:userId", async (req, res) => {

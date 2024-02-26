@@ -66,11 +66,20 @@ function Nav() {
           <li className="hover:text-orange-600">
             <Link to="/">Home</Link>
           </li>
-          <li className="hover:text-orange-600">
-            <Link to={`/recipes/myRecipes/${cookies.token.id}`}>
-              My Recipes
-            </Link>
-          </li>
+          {cookies.token && (
+            <li className="hover:text-orange-600">
+              <Link to={`/recipes/myRecipes/${cookies.token.id}`}>
+                My Recipes
+              </Link>
+            </li>
+          )}
+
+          {cookies.token && (
+            <li className="hover:text-orange-600">
+              <Link to={"/recipes/addRecipe"}>Add Recipe</Link>
+            </li>
+          )}
+
           {cookies.token ? (
             <li>
               <a

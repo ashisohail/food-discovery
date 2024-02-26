@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 import MyRecipes from "./components/MyRecipes";
+import AddRecipe from "./components/AddRecipe";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/auth/login" element={<SignIn />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/recipes/myRecipes/:userId" element={<MyRecipes />} />
+          <Route path="/recipes/addRecipe" element={<AddRecipe />} />
         </Routes>
       </div>
       <Footer />

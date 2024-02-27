@@ -8,13 +8,13 @@ function Nav() {
     <header className="fixed h-16 w-full flex justify-between items-center px-4 md:px-12 bg-gray-200 z-50">
       {/* logo */}
       <div>
-        <a href="">
+        <Link to="/">
           <i className="fa-solid fa-plate-wheat text-3xl text-orange-700 h-10 hover:text-orange-600">
             <span className="text-sm">
               <span className="text-yellow-500"> Food</span> Discovery
             </span>
           </i>
-        </a>
+        </Link>
       </div>
 
       {/* Bars button for Dropdown menu */}
@@ -29,7 +29,7 @@ function Nav() {
         </button>
 
         {/* Dropdown menu  */}
-        <div id="dropdown" className="hidden z-10 w-50 bg-gray-50">
+        {/* <div id="dropdown" className="hidden z-10 w-50 bg-gray-50">
           <ul
             className="py-1 text-sm text-black-700 dark:text-black-200"
             aria-labelledby="dropdownDefault"
@@ -58,8 +58,8 @@ function Nav() {
                 Contact
               </a>
             </li>
-          </ul>
-        </div>
+          </ul> */}
+        {/* </div> */}
 
         {/* menu items    */}
         <ul className="max-md:hidden md:flex md:space-x-6 md:p-0 md:space-x-6">

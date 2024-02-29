@@ -48,14 +48,14 @@ router.get("/:recipeId", async (req, res) => {
 
 // Edit a Recipe
 router.put("/editRecipe", async (req, res) => {
-  const recipe = await RecipeModel.findById(req.body._id);
-  recipe.name = req.body.name;
-  recipe.ingredients = req.body.ingredients;
-  recipe.instructions = req.body.instructions;
-  recipe.imageUrl = req.body.imageUrl;
-
-  const user = await UserModel.findById(req.body.userID);
   try {
+    const recipe = await RecipeModel.findById(req.body._id);
+    recipe.name = req.body.name;
+    recipe.ingredients = req.body.ingredients;
+    recipe.instructions = req.body.instructions;
+    recipe.imageUrl = req.body.imageUrl;
+
+    const user = await UserModel.findById(req.body.userID);
     await recipe.save();
     res.status(201).json({ updatedRecipe: recipe });
   } catch (error) {

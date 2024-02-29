@@ -13,7 +13,6 @@ function Register() {
       .post("http://localhost:3001/auth/register", data)
 
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           alert(response.data.message);
           navigate("/auth/login");

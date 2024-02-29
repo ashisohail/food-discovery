@@ -9,8 +9,6 @@ function EditRecipe({ recipe }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("inside submit");
-    console.log("edit Recipe", editRecipe);
 
     // Edit recepie in the DB
     axios

@@ -67,7 +67,7 @@ function Recipes() {
               <RecipeCard
                 name={recipe.name}
                 imageUrl={recipe.imageUrl}
-                id={recipe._id}
+                // id={recipe._id}
               />
             </Link>
           );

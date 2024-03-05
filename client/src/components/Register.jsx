@@ -10,7 +10,7 @@ function Register() {
     const data = Object.fromEntries(formData);
 
     axios
-      .post("http://localhost:3001/auth/register", data)
+      .post("https://food-discovery-backend.onrender.com/auth/register", data)
 
       .then((response) => {
         if (response.status === 200) {

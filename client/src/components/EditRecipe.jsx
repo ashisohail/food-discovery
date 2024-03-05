@@ -12,7 +12,10 @@ function EditRecipe({ recipe }) {
 
     // Edit recepie in the DB
     axios
-      .put("http://localhost:3001/recipes/editRecipe", editRecipe)
+      .put(
+        "https://food-discovery-backend.onrender.com/recipes/editRecipe",
+        editRecipe
+      )
       .then((response) => {
         if (response.status === 201) {
           navigate(`/recipes/myRecipes/${recipe.userOwner}`);

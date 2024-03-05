@@ -32,7 +32,9 @@ function RecipeDetail() {
   const handleDeleteRecipe = () => {
     // Make a Delete request to a URL
     axios
-      .delete(`http://localhost:3001/recipes/myRecipes/${recipeId}`)
+      .delete(
+        `https://food-discovery-backend.onrender.com/recipes/myRecipes/${recipeId}`
+      )
       .then((response) => {
         // handle success
         if (response.status === 200) {

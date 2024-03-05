@@ -9,7 +9,9 @@ function MyRecipes() {
   useEffect(() => {
     // Make a GET request to a URL
     axios
-      .get(`http://localhost:3001/recipes/myRecipes/${userId}`)
+      .get(
+        `https://food-discovery-backend.onrender.com/recipes/myRecipes/${userId}`
+      )
       .then((response) => {
         // handle success
         if (response.status === 200) {

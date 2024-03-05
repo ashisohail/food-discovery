@@ -16,7 +16,10 @@ function AddRecipe() {
 
     // Adding a recipe to the DB
     axios
-      .post("http://localhost:3001/recipes/addRecipe", data)
+      .post(
+        "https://food-discovery-backend.onrender.com/recipes/addRecipe",
+        data
+      )
       .then((response) => {
         if (response.status === 201) {
           navigate("/");

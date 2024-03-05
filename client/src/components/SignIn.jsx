@@ -13,7 +13,7 @@ function SignIn() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     axios
-      .post("http://localhost:3001/auth/login", data)
+      .post("https://food-discovery-backend.onrender.com/auth/login", data)
       .then((response) => {
         if (response.status !== 200) {
           setCookies("token", null);
